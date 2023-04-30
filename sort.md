@@ -1,5 +1,13 @@
 # 排序
 
+## 一些说在前面的要点
+- **稳定性**
+    - 在我们以下学过的排序算法中，只有**选择排序**不是稳定的。
+    - 稳定性，就是有两个相同的数字，在排序后两个数字的相对位置不变。（前面的在前面，后面的在后面）
+- **逆序对**
+    - 前面的一个数字大于后面一个数字，这就叫做逆序对。
+    - 例如 $5\ 1\ 2\ 3\ 4$ 中，有 $4$ 对逆序对。
+
 
 ## 选择排序
 
@@ -325,6 +333,25 @@ int main()
 
 ### 演示网址
 演示网址：[`https://visualgo.net/zh/sorting?slide=15`](https://visualgo.net/zh/sorting?slide=15)
+
+
+## `<algorithm>` 头文件 `sort()` 排序
+
+这么多排序算法，头都要晕了。为什么不用别人现成的函数来排序呢？看， `C++` 就有一个超级好用的头文件 -> `<algorithm>` ，用它里面的 `sort()` 函数就可以啦！并且，它支持**自定义排序**。
+
+两个重载：
+```cpp
+template<typename _RandomAccessIterator>
+    inline void
+    sort(_RandomAccessIterator __first, _RandomAccessIterator __last)
+```
+```cpp
+template<typename _RandomAccessIterator, typename _Compare>
+    inline void
+    sort(_RandomAccessIterator __first, _RandomAccessIterator __last,
+	 _Compare __comp)
+```  
+想要用的时候，就直接 `sort(&a[0], &a[n])` 或者 `sort(a, a + n)` 就可以了。写排序函数 `cmp` 时，想交换就 `return true` ，否则就 `return false` 。
 
 
 # THE END
